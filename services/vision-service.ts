@@ -1,7 +1,12 @@
 import { Platform } from 'react-native';
+import Constants from 'expo-constants';
 
-// You'll need to replace this with your Google Cloud Vision API key
-const VISION_API_KEY = 'AIzaSyCafEjW6Cbke7Lz8Jmaw2Qb7bsnO5duzGg';
+// Get the API key from environment variables
+const VISION_API_KEY = Constants.expoConfig?.extra?.googleCloudVisionApiKey;
+
+if (!VISION_API_KEY) {
+  console.error('Google Cloud Vision API key is not configured. Please check your environment variables.');
+}
 
 interface FrameCoordinates {
   x: number;
